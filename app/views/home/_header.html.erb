@@ -1,0 +1,23 @@
+<header>
+  <div class="header_bar">
+    <nav>
+      <!-- <span>Library</span>   -->
+      <ul>
+        
+        <li><a href="#">Library</a></li>
+        <li><a href="welcome">Contact</a></li>
+        <li><a href="home">Home</a></li>
+        <%if user_signed_in?%>
+            <li><%= button_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <%else%>
+        <li><%= link_to  "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Sign up",  new_user_registration_path, method: :post %></li>
+        <%end%> 
+        
+        <%# <%if user_signed_in?%>
+          <%# <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <%# <%end%> 
+      </ul>
+    </nav>
+  </div>
+</header>

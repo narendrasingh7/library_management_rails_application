@@ -1,0 +1,8 @@
+<%current_user.borrowed_books.map do |book|%>
+  <p> My borrowed Books<p>
+    Book name:
+    <%= book.title%><br></li>
+   Author name:
+  <%= book.author.name%>
+
+<%end%>

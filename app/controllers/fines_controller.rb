@@ -1,0 +1,4 @@
+class FinesController < ApplicationController
+
+  
+end

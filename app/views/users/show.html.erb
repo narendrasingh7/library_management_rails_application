@@ -1,0 +1,24 @@
+<%= render "home/header"%>
+<h1> User Details<h1>
+
+<%if user_signed_in?%>
+  <div class="font-size:30px">
+
+  <%if current_user.avatar.attached?%>
+  <%= image_tag current_user.avatar, size:"200"%>
+  <%end%><br>
+  <%= current_user.id%><br>
+  <%= current_user.email%><br>
+  <%= current_user.first_name%><br>
+  <%= current_user.address%><br>
+  <%= current_user.phone_no%><br>
+  </div>
+  <%# <%= current_user.borrowed_books%> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= link_to "edit", edit_user_path%>
+  <%= link_to "All Books", view_all_books_path%>
+  <%= link_to "My Books", my_books_path%>
+
+  
+
+  <%end%>

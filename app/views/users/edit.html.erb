@@ -1,0 +1,25 @@
+<h> Edit user<h><br>
+<%# <%= render "form"%>
+<%= form_with model:@user do |form| %>
+    <div>
+    <%= form.file_field :avatar %>
+    </div><br>
+    <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+    </div><br/>
+    <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+    </div><br/>
+    <div>
+    <%= form.label :phone_no %>
+    <%= form.text_field :phone_no %>
+    </div><br/>
+    <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+    </div><br/>
+    <%= form.submit %>
+    </div>
+<% end %>
