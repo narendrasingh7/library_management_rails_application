@@ -2,6 +2,8 @@ class BooksController < ApplicationController
 
   before_action :set_book, only: %i[show edit update destroy]
   # before_action :authenticate_u!
+  before_action :authenticate_user!, except: :show
+  # load_and_authorize_resource
     
   def index
     @books = Book.all
@@ -13,10 +15,13 @@ class BooksController < ApplicationController
   
   def new
     @book = Book.new
+    @authors = Author.all
+    @publishers = Publisher.all
   end
   
   def create
     @book = Book.new(book_params)
+    # authorize! :create, @book
   
     if @book.save
   
@@ -28,12 +33,10 @@ class BooksController < ApplicationController
   
   def edit
     # @user = User.find(params[:id])
-  
   end
   
   def update
     # @user = User.find(params[:id])
-  
     if @book.update(book_params)
       redirect_to @book
     else 
@@ -57,7 +60,7 @@ class BooksController < ApplicationController
   
   private
     def book_params
-      params.require(:book).permit(:name)
+      params.require(:book).permit(:title, :category, :published_date, :quantity, :rent, :author_id, :publisher_id)
     end
 
     def set_book

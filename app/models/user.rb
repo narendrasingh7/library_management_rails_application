@@ -14,4 +14,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #-------------------------------------------------------------------------------------------------
+  # def admin?
+  #   user_type == 'admin'
+  # end
+
+  def librarian?
+    user_type == 'librarian'
   end
+
+end

@@ -1,0 +1,53 @@
+<!-- views/books/edit.html.erb -->
+
+<!-- views/books/new.html.erb -->
+
+<h1 style="text-align: center;">New Book</h1>
+
+<div style="width: 50%; margin: 0 auto;">
+  <%= form_for @book do |f| %>
+    <div style="margin-bottom: 10px;">
+      <%= f.label :title, style: "font-weight: bold;" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :category, style: "font-weight: bold;" %>
+      <%= f.text_field :category, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :published_date, style: "font-weight: bold;" %>
+      <%= f.date_select :published_date, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :quantity, style: "font-weight: bold;" %>
+      <%= f.number_field :quantity, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :rent, style: "font-weight: bold;" %>
+      <%= f.number_field :rent, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :author_id, style: "font-weight: bold;" %>
+      <%= f.collection_select :author_id, @authors, :id, :name, 
+                             { prompt: 'Select an Author' },
+                             class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :publisher_id, style: "font-weight: bold;" %>
+      <%= f.collection_select :publisher_id, @publishers, :id, :name, 
+                             { prompt: 'Select a Publisher' },
+                             class: "form-control" %>
+    </div>
+
+    <div>
+      <%= f.submit "Create Book", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>
+</div>

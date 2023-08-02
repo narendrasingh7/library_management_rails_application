@@ -36,6 +36,11 @@ nav.logo {
 H1{
   color: darkblue;
 }
+
+.welcome_msz{
+  padding-top: 20px;
+}
+
 body{
 
  text-align: center;
@@ -154,10 +159,10 @@ footer p a{
   padding: 8px 10px;
   font-size: 16px;
   cursor: pointer;
-  /* width: fit-content;
-} */
+  /* /* width: fit-content;  */
+/* }
 
 .borrow-button:hover {
   background-color: #0056b3;
-}
+} */ 
 
