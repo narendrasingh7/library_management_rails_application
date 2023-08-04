@@ -1,6 +1,6 @@
 class BorrowingsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  # load_and_authorize_resource params_method: :borrowing_params
 
   before_action :set_borrowing, only: %i[show edit update destroy]
 
@@ -42,7 +42,7 @@ class BorrowingsController < ApplicationController
   
   private
     def borrowing_params
-      params.require(:author).permit(:name)
+      params.require(:borrowing).permit(:issue_date,:due_date,:returned_date,:user_id,:book_id,:status)
     end
 
     def set_borrowing

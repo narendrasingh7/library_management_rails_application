@@ -1,23 +1,25 @@
+<%= render "home/header"%>
+
 <h1> My borrowed Books<h1>
 <div class="container">
   <div class="row">
-   <%current_user.borrowed_books.each do |book|%>
-    <div class="col-3">
-      <div class="book-container">
-        <div class="book-image">
-          <img src="https://static.vecteezy.com/system/resources/previews/004/319/237/original/opened-book-with-empty-pages-free-vector.jpg" alt="Book Cover">
-        </div>
-        <div class="book-info">      
-          <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
-          <p class="book-author"> Author: <%=  book.author.name %></p>
-          <p class="book-publisher">Publisher: <%=  book.author.name %></p>
-          <%if user_signed_in?%>
-            <button class="btn btn-primary">Borrowed </button>
-            <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
-            <% end %>
-        </div>
-      </div>
-    </div>
+    <% @approved_books.each do |borrowing|%>
+          <div class="col-3">
+            <div class="book-container">
+              <div class="book-image">
+                <img src="https://static.vecteezy.com/system/resources/previews/004/319/237/original/opened-book-with-empty-pages-free-vector.jpg" alt="Book Cover">
+              </div>
+              <div class="book-info">      
+                <h2 class="book-title"><%= link_to borrowing.book.title, book_path(borrowing.book.id) %></h2>
+                <p class="book-author"> Author: <%=  borrowing.book.author.name %></p>
+                <p class="book-publisher">Publisher: <%=  borrowing.book.author.name %></p>     
+                <%if user_signed_in?%>
+                  <button class="btn btn-primary">Borrowed </button>
+                  <%= link_to "View", book_path(borrowing.book.id), class:"btn btn-primary" %>
+                  <% end %>
+              </div>
+            </div>
+          </div>
     <% end %>
   </div>
 </div>

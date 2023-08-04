@@ -55,6 +55,12 @@
 #   )
 # end
 
-User.create(email: 'librarian@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'librarian')
-User.create(email: 'admin@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'admin')
+# User.create(email: 'librarian@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'librarian')
+# User.create(email: 'admin@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'admin')
+
+21.times do
+    Borrowing.update(
+    status: "pending")
+end
+
 

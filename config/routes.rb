@@ -11,13 +11,16 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :user_home
+      get :borrow_book 
     end
   end
   resources :books
+  resources :borrowings
   root to: "home#index"
 
   get "view_all_books", to: "books#index"
   get "my_books", to: "books#user_book"
+  # , to:"users#borrow_book"
 
   
 

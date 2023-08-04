@@ -55,6 +55,10 @@ class BooksController < ApplicationController
 
 
   def user_book
+    
+    @approved_books = current_user.borrowings.where(status:"approved")
+
+
   end
   
   

@@ -1,25 +1,23 @@
 <%= render "home/header"%>
-<h1> User Details<h1>
-
-<%if user_signed_in?%>
-  <div class="font-size:30px">
-
-  <%if current_user.avatar.attached?%>
-  <%= image_tag current_user.avatar, size:"200"%>
-  <%end%><br>
-  <%= current_user.id%><br>
-  <%= current_user.email%><br>
-  <%= current_user.first_name%><br>
-  <%= current_user.address%><br>
-  <%= current_user.phone_no%><br>
-  </div>
-  <%# <%= current_user.borrowed_books%> 
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete ,class:"btn btn-primary" %>
-  <%= link_to "Update Profile", edit_user_path, class:"btn btn-primary"%>
-  <%= link_to "All Books", view_all_books_path, class:"btn btn-primary"%>
-  <%= link_to "My Books", my_books_path, class:"btn btn-primary"%>
-
-
+<h1>About<h1>
+  <%if user_signed_in?%>
+    <div class="font-size:20px">
+      <p>
+    <%if current_user.avatar.attached?%>
+    <%= image_tag current_user.avatar, size:"200"%>
+    <%end%><br>
+    <%#= current_user.id%>
+    <%= current_user.email%><br>
+    <%= current_user.first_name%><br>
+    <%= current_user.address%><br>
+    <%= current_user.phone_no%>
+    </p>
+    </div>
+    <%# <%= current_user.borrowed_books%> 
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete ,class:"btn btn-primary" %>
+    <%= link_to "Update Profile", edit_user_path, class:"btn btn-primary"%>
+    <%#= link_to "All Books", view_all_books_path, class:"btn btn-primary"%>
+    <%= link_to "My Books", my_books_path, class:"btn btn-primary"%>
   <%end%>
 
   <%= render "home/footer" %>
