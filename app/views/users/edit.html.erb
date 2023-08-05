@@ -1,27 +1,37 @@
-<h> Update Your Profile<h><br>
-<%# <%= render "form"%>
-<div>
-<%= form_with model:@user do |form| %>
-    <div>
-    <%= form.file_field :avatar %>
-    </div><br>
-    <div>
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-    </div><br/>
-    <div>
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-    </div><br/>
-    <div>
-    <%= form.label :phone_no %>
-    <%= form.text_field :phone_no %>
-    </div><br/>
-    <div>
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-    </div><br/>
-    <%= form.submit %>
+<%= render "home/header"%>
+
+<div class="login"style="padding-top: 20px">
+  <div class="card cards card-2 text-center" style="width: 35rem; padding-top: 40px: ">
+    <div class="card-body">   
+      <h1> Update Your Profile</h1>
+      <%# <%= render "form"%>
+      <div>
+      <%= form_with model:@user do |form| %>
+        <div style="margin-bottom: 10px;">
+          <%= form.label :Choose_Your_Profile_Picture, style: "font-weight: bold;" %>
+          <%= form.file_field :cover, class: "form-control" %>
+          </div>
+          <div>
+          <%= form.label :first_name, style: "font-weight: bold;" %>
+          <%= form.text_field :first_name, class: "form-control" %>
+          </div>
+          <div>
+          <%= form.label :last_name, style: "font-weight: bold;" %>
+          <%= form.text_field :last_name, class: "form-control" %>
+          </div>
+          <div>
+          <%= form.label :phone_no, style: "font-weight: bold;" %>
+          <%= form.text_field :phone_no, class: "form-control" %>
+          </div>
+          <div>
+          <%= form.label :address, style: "font-weight: bold;" %>
+          <%= form.text_field :address, class: "form-control" %>
+          </div><br>
+          <%= form.submit  class: "btn btn-primary" %>
+          </div>
+      <% end %>
+      </div>
     </div>
-<% end %>
+  </div>
 </div>
+<%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>

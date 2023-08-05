@@ -6,6 +6,9 @@
 
 <div style="width: 50%; margin: 0 auto;">
   <%= form_for @book do |f| %>
+     <div>
+    <%= f.file_field :cover %>
+    </div>
     <div style="margin-bottom: 10px;">
       <%= f.label :title, style: "font-weight: bold;" %>
       <%= f.text_field :title, class: "form-control" %>

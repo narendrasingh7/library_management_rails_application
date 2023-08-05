@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :books
   resources :borrowings
   root to: "home#index"
+  resources :authors
 
   get "view_all_books", to: "books#index"
   get "my_books", to: "books#user_book"

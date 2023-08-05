@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <% @books.each_with_index do |book,index|%>
+    <% @books.each do |book|%>
     <div class="col-3">
       <div class="book-container">
         <div class="book-image">
@@ -31,23 +31,7 @@
         </div>
       </div>
     </div>
-    <!-- <!-- <% break if index >= 100 %> -->
     <% end %> 
   </div>
 </div>
 
-<!-- <% @books.each do |book|%>
-  <div class="book-container">
-    <div class="book-image">
-      <img src="#" alt="Book Cover">
-    </div>
-    <div class="book-info">      
-      <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
-      <p class="book-author">Book Author</p>
-      <p class="book-publisher">Book Publisher</p>
-      
-      <button class="borrow-button">Borrow</button>
-    </div>
-    <% end %> -->
-
-    <%# borrow_book_path(book.id),"borrow_book/#{book.id}" %>

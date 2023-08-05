@@ -4,7 +4,7 @@ class Borrowing < ApplicationRecord
 
   has_many :fines
 
-  enum status: { approved: 'approved', not_approved: 'not_approved', returned: 'returned  ' }
+  enum status: { approved: 'approved', not_approved: 'not_approved', returned: 'returned' }
 
 
 end

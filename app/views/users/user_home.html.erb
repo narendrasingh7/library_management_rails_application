@@ -12,10 +12,10 @@
 <% end %>
   <% if can? :create,:update, @books%>
     <div>
-      <%= link_to "Create Book", new_book_url %>
+      <h5><%= link_to "Create Book", new_book_url %></h5>
     </div>
     <div>
-      <%= link_to "Borrowings", borrowings_path %>
+      <h5><%= link_to "Borrowings", borrowings_path %></h5>
     </div>
   <% end %>
 
