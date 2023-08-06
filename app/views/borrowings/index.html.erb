@@ -13,6 +13,7 @@
       <th scope="col">user_name</th>
       <th scope="col">book_title</th>
       <th scope="col">Status</th>
+      <th scope="col">Quantity</th>
       <th scope="col">Approve Request</th>
       <th scope="col">Returned</th>
     </tr>
@@ -27,11 +28,9 @@
       <td colspan="row"><%= borrowing.user.first_name%></td>
       <td colspan="row"><%= borrowing.book.title%></td>
       <td colspan="row"><%= borrowing.status%></td>
+      <td colspan="row"><%= borrowing.book.quantity%></td>
       <td colspan="row"><%=link_to "Approve", edit_borrowing_path(borrowing.id),class: "btn btn-secondary"%></td>
       <td colspan="row"><%=link_to "Return", edit_borrowing_path(borrowing.id),class: "btn btn-secondary"%></td>
-     
-      
-
     </tr>
     <% end %>
   </tbody>

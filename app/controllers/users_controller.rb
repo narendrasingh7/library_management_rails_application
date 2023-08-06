@@ -56,14 +56,20 @@ class UsersController < ApplicationController
 
     def borrow_book
       @book = Book.find(params[:book_id])
-      if isBorrovable?
-        borrow = @book.borrowings.new(issue_date: Date.today, due_date: Date.today+15.days, user_id: current_user.id, book_id:@book.id)
-        borrow.save
-        redirect_to my_books_path
-      else 
+      if Book.available?(@book)
+        if Book.isBorrovable?(@book,current_user)
+          borrow = @book.borrowings.new(issue_date: Date.today, due_date: Date.today+15.days, user_id: current_user.id, book_id:@book.id)
+          if borrow.save
+            redirect_to my_books_path
+            @book.quantity - 1
+          end
+        else 
+          redirect_to user_home_user_path(current_user)
+          flash[:notice] = "You Already Borrowed This Book!"
+        end
+      else
         redirect_to user_home_user_path(current_user)
-        flash[:notice] = "You Already Borrowed This Book!"
-        
+        flash[:notice] = "Book! not available"
       end
     end
 
@@ -76,22 +82,4 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-
-    def isBorrovable?
-      @book = Book.find(params[:book_id])
-      # @book.borrowings.each do |b|
-      #   if current_user.id == b.user_id
-      #     true
-      #   else
-      #     false
-      #   end
-      # end
-      if Borrowing.find_by(user_id: current_user, book_id: @book.id)
-        false
-      else
-        true
-      end
-    end
-
-    # borrow.user_id == current_user.id
 end
