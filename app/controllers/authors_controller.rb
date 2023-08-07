@@ -18,7 +18,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      redirect_to @author
+      redirect_to @author, notice: 'User was successfully created.'
     else 
       render :new, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class AuthorsController < ApplicationController
       params.require(:author).permit(:name)
     end
 
-    def set_user
+    def set_author
       @author = Author.find(params[:id])
     end
 end

@@ -55,6 +55,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "faker"
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -79,6 +81,7 @@ gem "bootstrap", "~> 5.2"
 
 gem "sassc-rails"
 gem 'cancancan'
+gem 'sidekiq'
 
 
 
