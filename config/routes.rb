@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :borrowings
   root to: "home#index"
   resources :authors
+  resources :publishers
 
   get "view_all_books", to: "books#index"
   get "my_books", to: "books#user_book"

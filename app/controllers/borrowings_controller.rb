@@ -28,7 +28,13 @@ class BorrowingsController < ApplicationController
   end
   
   def update 
+    # byebug
     if @borrowing.update(borrowing_params)
+      if @borrowing.status == "returned"
+        @borrowing.book.update(quantity:  @borrowing.book.quantity + 1 )
+      elsif @borrowing.status =="approved"
+        @borrowing.book.update(quantity:  @borrowing.book.quantity - 1 )
+      end
       redirect_to @borrowing
     else 
       render :new, status: :unprocessable_entity

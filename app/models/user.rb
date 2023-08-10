@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # after_create :send_welcome_email
   has_one_attached :avatar
-  has_many :borrowings #, dependent: :destroy
+  has_many :borrowings , dependent: :destroy
   has_many :borrowed_books, through: :borrowings, source: :book
 
   has_many :reservations, dependent: :destroy
-  has_many :books, through: :reservations
+  has_many :resurved_books, through: :reservations, source: :book
 
   has_many :fines
 

@@ -1,0 +1,163 @@
+require 'rails_helper'
+
+RSpec.describe PublishersController, type: :controller do
+    
+  let(:publisher) { create(:publisher) }
+
+  describe "Get #index" do
+      it "index" do
+        # @author = Author.create(name:"sumit") 
+        get :index
+        expect(response).to be_successful
+      end
+      it "renders the :index view" do
+        get :index
+        expect(response).to render_template(:index)
+      end
+  end
+
+  describe "validation" do
+    it 'has a name' do
+      expect(publisher.name).to be_present
+    end
+  end
+
+  describe "Get #show" do
+    it 'respose to be succusseful #show ' do
+      # byebug
+      get :show,  params: {id: publisher.to_param}
+      expect(response).to be_successful
+    end
+
+    it "renders the :show view" do
+      # byebug
+      get :show, params: {id: publisher.to_param}
+      expect(response).to render_template(:show)
+    end   
+  end
+
+  describe "Get #edit" do
+    # let(:author) { create(:author) }
+    it 'respose to be succusseful #edit ' do
+      # byebug
+      get :edit,  params: {id: publisher.to_param}
+      expect(response).to be_successful
+    end
+    
+    it "renders the :edit view" do
+    # byebug
+    get :edit, params: {id: publisher.to_param}
+    expect(response).to render_template(:edit)
+    end
+  end
+
+  describe "Get #new" do
+      it '#new instance @author ' do
+        get :new
+        expect(assigns(:publisher)).to be_instance_of(Publisher)
+      end
+
+      it "renders the :new view" do
+        get :new
+        expect(response).to render_template(:new)
+      end
+  end
+
+  describe "Post #create" do
+
+    context "success" do
+
+      it "adds new Publisher to db" do
+        # author_count = Author.count
+       
+        publisher_attributes = FactoryBot.attributes_for(:author)
+        expect {
+          post :create, params: { publishe: publisher_attributes }
+        }.to change(Publisher, :count).by(1)
+      end
+
+      it "should redirect to the new page author#show" do
+        
+        publisher_attributes = FactoryBot.attributes_for(:author)
+        post :create , params: { author: author_attributes}
+        expect(response).to redirect_to(Publisher.last)
+      end
+
+    end
+
+    context "Invalid attiributes" do
+
+      it "does not create a new record" do
+        expect { 
+          post :create, params: { publisher: {name: '' } }
+        }.to_not change(Publisher, :count)
+      end
+
+      it "should render to the new page again " do
+        
+        post :create , params: { publisher:{name: ''}}
+        expect(response).to render_template(:new)
+      end
+
+    end
+  end
+#-------------------------------------------------------------------------------------------------
+  describe "Patch #update" do
+
+    context "success" do
+      
+
+      it "Update publisher to db" do
+        # byebug
+        put :update ,params: {id: publisher.id ,publisher: {name: "Singh"}}
+        expect(publisher.reload.name).to eq("Singh")
+        
+      end
+
+      # it "should redirect to the new page author#show" do
+        
+      #   put :update ,params: {d: author.id ,author: {name: "Narendra"}}
+      #   expect(response).to render_template(auhtor.id)
+      # end
+
+    end
+    context "fails" do
+      
+
+      it "can't Update publisher to db" do
+        # byebug
+        put :update ,params: {id: publisher.id ,publisher: {name: nil}}
+        expect(response).to render_template(:new)
+        
+      end
+
+      # it "should redirect to the new page author#show" do
+        
+      #   put :update ,params: {d: author.id ,author: {name: "Narendra"}}
+      #   expect(response).to redirect_to(:show)
+      # end
+
+    end
+  end
+#---------------------------------------------------------------------------------------------------------------
+  describe "Delete #destroy" do
+    it 'respose to be succusseful  #destroy' do
+      expect{
+        delete :destroy,  params: {id: publisher.to_param}
+      }
+    end
+
+    it "renders the :index view" do
+      # byebug
+      get :index, params: {id: publisher.to_param}
+      expect(response).to render_template(:index)
+    end   
+  end
+end
+
+
+
+
+
+
+

@@ -2,11 +2,6 @@ class UsersController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy]
     before_action :authenticate_user!
 
-    def index
-      @users = User.all
-
-    end
-
     def show
     end
 
@@ -58,10 +53,9 @@ class UsersController < ApplicationController
       @book = Book.find(params[:book_id])
       if Book.available?(@book)
         if Book.isBorrovable?(@book,current_user)
-          borrow = @book.borrowings.new(issue_date: Date.today, due_date: Date.today+15.days, user_id: current_user.id, book_id:@book.id)
+          borrow = @book.borrowings.new(issue_date: Time.now, due_date: Date.today+15.days, user_id: current_user.id, book_id:@book.id)
           if borrow.save
             redirect_to my_books_path
-            @book.quantity - 1
           end
         else 
           redirect_to user_home_user_path(current_user)

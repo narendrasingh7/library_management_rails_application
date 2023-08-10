@@ -4,6 +4,7 @@ RSpec.describe AuthorsController, type: :controller do
     
   let(:author) { create(:author) }
 
+
   describe "Get #index" do
       it "index" do
         # @author = Author.create(name:"sumit") 
@@ -102,49 +103,46 @@ RSpec.describe AuthorsController, type: :controller do
     end
   end
 #-------------------------------------------------------------------------------------------------
-  # describe "Patch #update" do
+  describe "Patch #update" do
 
-  #   context "success" do
+    context "success" do
+      
 
-  #     it "Update author to db" do
-  #       # author_count = Author.count
-       
-  #       author_attributes = FactoryBot.attributes_for(:author)
-  #       expect {
-  #         patch :update, params: { author: author_attributes }
-  #       }.to change(Author, :count).by(1)
-  #     end
-
-  #     it "should redirect to the new page author#show" do
+      it "Update author to db" do
+        # byebug
+        put :update ,params: {id: author.id ,author: {name: "Narendra"}}
+        expect(author.reload.name).to eq("Narendra")
         
-  #       author_attributes = FactoryBot.attributes_for(:author)
-  #       post :create , params: { author: author_attributes}
-  #       expect(response).to redirect_to(Author.last)
-  #     end
+      end
 
-  #   end
-
-  #   context "Invalid attiributes" do
-
-  #     it "does not create a new record" do
-  #       expect { 
-  #         post :create, params: { author: {name: '' } }
-  #       }.to_not change(Author, :count)
-  #     end
-
-  #     it "should render to the new page again " do
+      # it "should redirect to the new page author#show" do
         
-  #       post :create , params: { author:{name: ''}}
-  #       expect(response).to render_template(:new)
-  #     end
+      #   put :update ,params: {d: author.id ,author: {name: "Narendra"}}
+      #   expect(response).to render_template(auhtor.id)
+      # end
 
-  #   end
-  # end
+    end
+    context "fails" do
+      
 
+      it "can't Update author to db" do
+        # byebug
+        put :update ,params: {id: author.id ,author: {name: nil}}
+        expect(response).to render_template(:new)
+        
+      end
+
+      # it "should redirect to the new page author#show" do
+        
+      #   put :update ,params: {d: author.id ,author: {name: "Narendra"}}
+      #   expect(response).to redirect_to(:show)
+      # end
+
+    end
+  end
+#---------------------------------------------------------------------------------------------------------------
   describe "Delete #destroy" do
     it 'respose to be succusseful  #destroy' do
-      # byebug
-      # auth = 
       expect{
         delete :destroy,  params: {id: author.to_param}
       }
@@ -156,9 +154,6 @@ RSpec.describe AuthorsController, type: :controller do
       expect(response).to render_template(:index)
     end   
   end
-
-
-
 end
 
 
