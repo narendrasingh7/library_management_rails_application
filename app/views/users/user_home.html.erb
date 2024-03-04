@@ -5,8 +5,16 @@
    <h1>Hello!</h1>
    <h1><%= current_user.first_name %></h1>
   </div>
+  <div class = "user_home_view">
+    <div>
+      <img src="https://img.freepik.com/free-vector/magic-books-cartoon-landing-page-young-girl-library-night-time-with-glowing-volumes-flying-around-curious-child-dark-reader-club-room-with-bookcases-reading-hobby-vector-web-banner_107791-8261.jpg?size=626&ext=jpg&ga=GA1.1.739325675.1691342254&semt=ais" alt="imgae" width="550px">
+    </div>
+    <div>
+      <%= video_tag "Video.mp4", autoplay: :autoplay, muted: :muted, loop: :loop, autobuffer: true ,style: "height:80%;width:100%;"%>
+    </div>
+  </div>
   <% flash.each do |type, msg| %>
-  <div>
+  <div class="p-3 mb-2 bg-danger text-white">
     <%= msg %>
   </div>
 <% end %>
@@ -20,6 +28,8 @@
   <% end %>
 
   <%= render "home/all_book" , locals: { book: @book } %>
+
+  
  
 </div>
 

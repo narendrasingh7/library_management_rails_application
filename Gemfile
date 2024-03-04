@@ -57,6 +57,7 @@ group :development, :test do
   gem "faker"
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+  gem 'simplecov'
 end
 
 group :development do
@@ -82,6 +83,7 @@ gem "bootstrap", "~> 5.2"
 gem "sassc-rails"
 gem 'cancancan'
 gem 'sidekiq'
+
 
 
 

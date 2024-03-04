@@ -222,6 +222,14 @@ nav ul li a:hover {
 .home_intro p:hover {
   color: darkcyan;
 }
-
+.user_home_view{
+ 
+  /* padding-top: 30px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  opacity: 70%;
+}
 
 
