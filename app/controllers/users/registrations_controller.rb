@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
-class User::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # before_action :configure_sign_up_params
-  # after_save
+  # calling job for invitation mail
+  def create
+    super
+    InviteUserJob.perform_now(@user)
+  end
+
   # UserMailer.with(user: @user).welcome_email.deliver_now
 
   # protected

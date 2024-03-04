@@ -1,6 +1,6 @@
 <%= render "home/header"%>
 
-<h1> My borrowed Books<h1>
+<h1> My borrowed Books</h1>
 <div class="container">
   <div class="row">
     <% @approved_books.each do |borrowing|%>
@@ -10,9 +10,10 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/004/319/237/original/opened-book-with-empty-pages-free-vector.jpg" alt="Book Cover">
               </div>
               <div class="book-info">      
-                <h2 class="book-title"><%= link_to borrowing.book.title, book_path(borrowing.book.id) %></h2>
+                <h2 class="book-title"><b><%= borrowing.book.title %></b></h2>
                 <p class="book-author"> Author: <%=  borrowing.book.author.name %></p>
-                <p class="book-publisher">Publisher: <%=  borrowing.book.author.name %></p>     
+                <p class="book-publisher">Publisher: <%=  borrowing.book.publisher.name %></p>   
+                <p><b>Due Date: <%=  borrowing.due_date %></b></p>  
                 <%if user_signed_in?%>
                   <button class="btn btn-primary">Borrowed </button>
                   <%= link_to "View", book_path(borrowing.book.id), class:"btn btn-primary" %>

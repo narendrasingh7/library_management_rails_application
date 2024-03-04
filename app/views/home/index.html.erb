@@ -1,51 +1,50 @@
-<!-- <%#= render "/header"%> -->
-  <%= render "header"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+</head>
+
+<body>
+    <header>
+        
+        <%= render "header"%>
+    </header>
+
+    <main>
+      
+    <div class = "home_intro">
+      <div>
+        <h1>Welcome to our E-Library</h1> 
+        <strong><p>E-library – your digital gateway to knowledge and imagination. <br>Explore a vast collection of e-books, journals, and more,<br> accessible anytime, anywhere. Join our community, connect with <br>like-minded readers, and embark on a journey of learning and discovery.Happy reading!</p></strong>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw_FjnIzQI8kyMgHo641nCFHhlKS-3X3aeYD24Y7i3PzSP81cFFqJXqwUCi58Pax9mpoU&usqp=CAU" alt="image">
+       
+      </div>
+      <div>
+         <img src="https://img.freepik.com/free-vector/magic-books-cartoon-landing-page-young-girl-library-night-time-with-glowing-volumes-flying-around-curious-child-dark-reader-club-room-with-bookcases-reading-hobby-vector-web-banner_107791-8261.jpg?size=626&ext=jpg&ga=GA1.1.739325675.1691342254&semt=ais" alt="imgae" width="500px"> 
+         
+       
+      </div>
+    </div>
+         
+    
+    </main>
+
+    <footer>
+        <p>&copy; 2023 E-Library. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+
+
 <%# <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 <div style= "font-size:30px">
-<!-- <%if user_signed_in?%>
-  <%# <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-  <a href="/users/<%= current_user.id%>">
-      <%="View profile" %></a>
-<%else %>
-<%= link_to  "Sign in", new_user_session_path %>
-<%= link_to "Sign up",  new_user_registration_path, method: :post %>
-
-<%end%> -->
-<!-- 
-<% @books.each do |book|%>
-  <ul><li><%= link_to book.title, book_path(book.id) %></li></ul>
-<% end %>
-</div> -->
-<!-- <%= render "users/form"%> -->
 <%= render "users/form", user: @user %>
 <%= render "all_book" %>
 <%= render "footer" %>
 
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Book Container View</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div class= "wrapper">
-  <% @books.each do |book|%>
-  <div class="book-container">
-    <div class="book-image">
-      <img src="#" alt="Book Cover">
-    </div>
-    <div class="book-info">      
-      <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
-      <p class="book-author">Book Author</p>
-      <p class="book-publisher">Book Publisher</p>
-      
-      <button class="borrow-button">Borrow</button>
-    </div>
-    <% end %>
-  </div>
-</div>
-</body>
-</html> -->
 
 

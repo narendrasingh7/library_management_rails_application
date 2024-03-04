@@ -210,5 +210,18 @@ nav ul li a:hover {
 
 }
 
+.home_intro{
+ 
+  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home_intro p:hover {
+  color: darkcyan;
+}
+
 
 
