@@ -1,7 +1,7 @@
 <h1> My borrowed Books<h1>
 <div class="container">
   <div class="row">
-   <%current_user.borrowed_books.map do |book|%>
+   <%current_user.borrowed_books.each do |book|%>
     <div class="col-3">
       <div class="book-container">
         <div class="book-image">

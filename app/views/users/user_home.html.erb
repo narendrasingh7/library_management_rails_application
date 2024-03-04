@@ -1,3 +1,15 @@
-<%= render "home/header"%>
-<%= render "home/all_book" , locals: { book: @book } %>
-<%= render "home/footer" %>
+<div class="user_home">
+  <%= render "home/header"%>
+
+  <div class="welcome_msz">
+    <h1>Hello </h1></span><h2><%= current_user.first_name %></h2>
+  </div>
+  <% if can? :create, @books%>
+    <div>
+      <%= link_to "Create Book", new_book_url %>
+    </div>
+  <% end %>
+
+  <%= render "home/all_book" , locals: { book: @book } %>
+  <%= render "home/footer" %>
+</div>

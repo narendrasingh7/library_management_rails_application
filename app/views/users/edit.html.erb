@@ -1,5 +1,6 @@
-<h> Edit user<h><br>
+<h> Update Your Profile<h><br>
 <%# <%= render "form"%>
+<div>
 <%= form_with model:@user do |form| %>
     <div>
     <%= form.file_field :avatar %>
@@ -23,3 +24,4 @@
     <%= form.submit %>
     </div>
 <% end %>
+</div>

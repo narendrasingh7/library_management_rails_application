@@ -18,7 +18,7 @@
 #   )
 # end
 
-require 'faker'
+# require 'faker'
 
 # Number of authors  want to create
 # num_publishers = 30
@@ -54,4 +54,7 @@ require 'faker'
 #     publisher_id: publisher
 #   )
 # end
+
+User.create(email: 'librarian@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'librarian')
+User.create(email: 'admin@gmail.com', password: '121212', password_confirmation: '121212', user_type: 'admin')
 

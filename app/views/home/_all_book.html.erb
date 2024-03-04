@@ -1,26 +1,30 @@
-
 <div class="container">
   <div class="row">
-    <% @books.each do |book|%>
+    <% @books.each_with_index do |book,index|%>
     <div class="col-3">
       <div class="book-container">
         <div class="book-image">
           <img src="https://static.vecteezy.com/system/resources/previews/004/319/237/original/opened-book-with-empty-pages-free-vector.jpg" alt="Book Cover">
         </div>
         <div class="book-info">      
-          <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
+          <h2 class="book-title"><b>Title: <%= book.title %></b></h2>
           <p class="book-author"> Author: <%=  book.author.name %></p>
           <p class="book-publisher">Publisher: <%=  book.author.name %></p>
           <%if user_signed_in?%>
-            <button class="btn btn-primary">Borrow </button>
+            <%= link_to "Borrow", class:"btn btn-primary" %>
+            <!-- <button class="btn btn-primary"> Borrow </button> -->
             <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
           <%else%>
             <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
           <% end %>
+          <% if can? :update, @books%>
+            <%= link_to "Edit", edit_book_path(book),class:"btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
-    <% end %>
+    <!-- <!-- <% break if index >= 100 %> -->
+    <% end %> 
   </div>
 </div>
 
@@ -37,3 +41,5 @@
       <button class="borrow-button">Borrow</button>
     </div>
     <% end %> -->
+
+    borrow_book_path(book.id),

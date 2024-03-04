@@ -1,4 +1,4 @@
-<%#= render "/header"%>
+<!-- <%#= render "/header"%> -->
   <%= render "header"%>
 <%# <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 <div style= "font-size:30px">
@@ -16,7 +16,7 @@
   <ul><li><%= link_to book.title, book_path(book.id) %></li></ul>
 <% end %>
 </div> -->
-<%= render "users/form"%>
+<!-- <%= render "users/form"%> -->
 <%= render "users/form", user: @user %>
 <%= render "all_book" %>
 <%= render "footer" %>

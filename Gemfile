@@ -78,6 +78,7 @@ gem 'faker'
 gem "bootstrap", "~> 5.2"
 
 gem "sassc-rails"
+gem 'cancancan'
 
 
 
