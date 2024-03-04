@@ -6,5 +6,7 @@ class Borrowing < ApplicationRecord
 
   enum status: { approved: 'approved', not_approved: 'not_approved', returned: 'returned' }
 
-
+  # def self.issued?
+  #   if Borrowing.status == "approved"
+  # end
 end
