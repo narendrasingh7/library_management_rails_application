@@ -1,7 +1,34 @@
+<div class="book_show">
+  <%= render "home/header"%>
+  <br>
+  <%if user_signed_in? %>
+    <div class="book_data">
+      <h1>Title:  <%= @book.title%></h1>
+        <img class="img-fluid rounded", alt="Book Cover"
+          <%if @book.cover.attached?%>
+              <%= image_tag @book.cover, size: "600" %>
+          <%end%>
+        <b>
+        <br>
+        <p>Author name:  <%= @book.author.name%></p>
+        <p>Publisher Name:  <%= @book.publisher.name%></p>
+        <p>Published Date:  <%= @book.published_date%></p>
+        <p>Genere:  <%= @book.category%></p>
+        </b>
+    </div>
+  <% else %>
+  <div class="card cards card-2 text-center" style="width: 18rem;">
+    <div class="card-body">
+      <p>Welcome to the E Bibrary! This is the one of the best library ever!</p>
+      <p>First You need to sing in to View Book !</p>
+      <P>Sign in First !!</P>
+      <%= link_to  "Sign in", new_user_session_path,class: "btn btn-primary", style: "margin-top: 10px;" %><br>
+    </div>
+  </div>  
+    <% end %>
 
-<p>Title:  <%= @book.title%></p>
-<p>Author name:  <%= @book.author.name%></p>
-<p>Publisher Name:  <%= @book.publisher.name%></p>
-<p>Published Date:  <%= @book.published_date%></p>
-
-<%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>
+  <%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>
+  <br>
+  <br>
+  <%= render "home/footer" %>
+</div>

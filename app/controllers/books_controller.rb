@@ -55,12 +55,16 @@ class BooksController < ApplicationController
 
 
   def user_book
+    
+    @approved_books = current_user.borrowings.where(status:"approved")
+
+
   end
   
   
   private
     def book_params
-      params.require(:book).permit(:title, :category, :published_date, :quantity, :rent, :author_id, :publisher_id)
+      params.require(:book).permit(:title, :category, :published_date, :quantity, :rent, :author_id, :publisher_id, :cover)
     end
 
     def set_book

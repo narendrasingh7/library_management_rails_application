@@ -1,0 +1,34 @@
+<!-- app/views/borrowings/edit.html.erb -->
+<%= render "home/header"%>
+
+<h1 style="text-align: center;">Edit Borrowing</h1>
+
+<div style="width: 50%; margin: 0 auto;">
+  <%= form_for @borrowing do |f| %>
+    <div style="margin-bottom: 10px;">
+      <%= f.label :issue_date, style: "font-weight: bold;" %>
+      <%= f.date_field :issue_date, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :due_date, style: "font-weight: bold;" %>
+      <%= f.date_field :due_date, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :returned_date, style: "font-weight: bold;" %>
+      <%= f.date_field :returned_date, class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <%= f.label :status, style: "font-weight: bold;" %><br>
+      <%= f.select :status,options_for_select(["approved", "not_approved","returned"], "approved"),class: "form-control" %>
+    </div>
+    
+    <div>
+      <%= f.submit "Update & Approve Borrowing", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>
+</div>

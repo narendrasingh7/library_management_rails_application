@@ -4,24 +4,25 @@ class UsersController < ApplicationController
 
     def index
       @users = User.all
+
     end
 
     def show
     end
 
-    def new
-      @user = User.new
-    end
+    # def new
+    #   @user = User.new
+    # end
 
-    def create
-      @user = User.new(user_params)
-
-      if @user.save
-        redirect_to @user
-      else 
-        render :new, status: :unprocessable_entity
-      end
-    end
+    # def create
+    #   @user = User.new(user_params)
+    #   if @user.save
+    #     UserMailer.with(user: @user).welcome_email.deliver_now
+    #     redirect_to @user
+    #   else 
+    #     render :new, status: :unprocessable_entity
+    #   end
+    # end
 
     def edit
       @user = User.find(params[:id])
@@ -53,14 +54,44 @@ class UsersController < ApplicationController
       render "books/index"
     end
 
+    def borrow_book
+      @book = Book.find(params[:book_id])
+      if isBorrovable?
+        borrow = @book.borrowings.new(issue_date: Date.today, due_date: Date.today+15.days, user_id: current_user.id, book_id:@book.id)
+        borrow.save
+        redirect_to my_books_path
+      else 
+        redirect_to user_home_user_path(current_user)
+        flash[:notice] = "You Already Borrowed This Book!"
+        
+      end
+    end
+
 
     private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :phone_no, :address, :avatar)
     end
 
-    private
-      def set_user
-        @user = User.find(params[:id])
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def isBorrovable?
+      @book = Book.find(params[:book_id])
+      # @book.borrowings.each do |b|
+      #   if current_user.id == b.user_id
+      #     true
+      #   else
+      #     false
+      #   end
+      # end
+      if Borrowing.find_by(user_id: current_user, book_id: @book.id)
+        false
+      else
+        true
       end
+    end
+
+    # borrow.user_id == current_user.id
 end

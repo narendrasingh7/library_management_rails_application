@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <% @books.each_with_index do |book,index|%>
+    <% @books.each do |book|%>
     <div class="col-3">
       <div class="book-container">
         <div class="book-image">
@@ -11,9 +11,17 @@
           <p class="book-author"> Author: <%=  book.author.name %></p>
           <p class="book-publisher">Publisher: <%=  book.author.name %></p>
           <%if user_signed_in?%>
-            <%= link_to "Borrow", class:"btn btn-primary" %>
-            <!-- <button class="btn btn-primary"> Borrow </button> -->
-            <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
+            <%if current_user.user_type == "librarian"%>
+              <%= link_to "Destroy", book_path(book.id), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure? You want to delete this Book"
+                    } ,class:"btn btn-primary" %>
+              <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
+            <%else%>
+              <%= link_to "Borrow", borrow_book_user_path(book_id: book.id), class:"btn btn-primary" %>
+              <!-- <button class="btn btn-primary"> Borrow </button> -->
+              <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
+             <% end %>
           <%else%>
             <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
           <% end %>
@@ -23,23 +31,7 @@
         </div>
       </div>
     </div>
-    <!-- <!-- <% break if index >= 100 %> -->
     <% end %> 
   </div>
 </div>
 
-<!-- <% @books.each do |book|%>
-  <div class="book-container">
-    <div class="book-image">
-      <img src="#" alt="Book Cover">
-    </div>
-    <div class="book-info">      
-      <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
-      <p class="book-author">Book Author</p>
-      <p class="book-publisher">Book Publisher</p>
-      
-      <button class="borrow-button">Borrow</button>
-    </div>
-    <% end %> -->
-
-    borrow_book_path(book.id),

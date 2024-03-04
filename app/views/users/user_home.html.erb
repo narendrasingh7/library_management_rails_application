@@ -2,14 +2,24 @@
   <%= render "home/header"%>
 
   <div class="welcome_msz">
-    <h1>Hello </h1></span><h2><%= current_user.first_name %></h2>
+   <h1>Hello!</h1>
+   <h1><%= current_user.first_name %></h1>
   </div>
-  <% if can? :create, @books%>
+  <% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+  <% if can? :create,:update, @books%>
     <div>
-      <%= link_to "Create Book", new_book_url %>
+      <h5><%= link_to "Create Book", new_book_url %></h5>
+    </div>
+    <div>
+      <h5><%= link_to "Borrowings", borrowings_path %></h5>
     </div>
   <% end %>
 
   <%= render "home/all_book" , locals: { book: @book } %>
-  <%= render "home/footer" %>
+ 
 </div>
+

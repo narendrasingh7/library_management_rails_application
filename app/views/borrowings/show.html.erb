@@ -1,0 +1,30 @@
+<%= render "home/header"%>
+<h1> Updated Borrowing</h1>
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">issue_date</th>
+      <th scope="col">due_date</th>
+      <th scope="col">returned_date</th>
+      <th scope="col">user_name</th>
+      <th scope="col">book_title</th>
+      <th scope="col">Status</th>
+      </tr>
+  </thead>
+  <tbody>
+   
+    <tr>
+      <td colspan="row"><%= %></td>
+      <td colspan="row"><%= @borrowing.issue_date%></td>
+      <td colspan="row"><%= @borrowing.due_date%></td>
+      <td colspan="row"><%= @borrowing.returned_date%></td>
+      <td colspan="row"><%= @borrowing.user.first_name%></td>
+      <td colspan="row"><%= @borrowing.book.title%></td>
+      <td colspan="row"><%= @borrowing.status%></td>
+     </tr>
+
+  </tbody>
+</table>
+<%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>

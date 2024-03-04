@@ -1,9 +1,14 @@
 <!-- views/books/edit.html.erb -->
+<%= render "home/header"%>
+
 
 <h1 style="text-align: center;">Edit Book</h1>
 
 <div style="width: 50%; margin: 0 auto;">
   <%= form_for @book do |f| %>
+     <div>
+    <%= f.file_field :cover %>
+    </div>
     <div style="margin-bottom: 10px;">
       <%= f.label :title, style: "font-weight: bold;" %>
       <%= f.text_field :title, class: "form-control" %>
@@ -46,3 +51,4 @@
 
   <%= link_to "Back", :back, class: "btn btn-secondary", style: "margin-top: 10px;" %>
 </div>
+

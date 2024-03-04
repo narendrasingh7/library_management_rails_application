@@ -1,6 +1,7 @@
 <!-- views/books/edit.html.erb -->
 
 <!-- views/books/new.html.erb -->
+<%= render "home/header"%>
 
 <h1 style="text-align: center;">New Book</h1>
 
@@ -43,6 +44,11 @@
       <%= f.collection_select :publisher_id, @publishers, :id, :name, 
                              { prompt: 'Select a Publisher' },
                              class: "form-control" %>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+    <%= f.label :Choose_Book_Cover, style: "font-weight: bold;" %>
+    <%= f.file_field :cover, class: "form-control" %>
     </div>
 
     <div>
