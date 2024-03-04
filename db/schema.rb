@@ -67,8 +67,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_133214) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "book_id", null: false
+    t.string "status"
     t.index ["book_id"], name: "index_borrowings_on_book_id"
     t.index ["user_id"], name: "index_borrowings_on_user_id"
+  end
+
+  create_table "demos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "fines", force: :cascade do |t|
