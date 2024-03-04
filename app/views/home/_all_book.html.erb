@@ -1,7 +1,7 @@
-<h1> My borrowed Books<h1>
+
 <div class="container">
   <div class="row">
-   <%current_user.borrowed_books.map do |book|%>
+    <% @books.each do |book|%>
     <div class="col-3">
       <div class="book-container">
         <div class="book-image">
@@ -12,12 +12,28 @@
           <p class="book-author"> Author: <%=  book.author.name %></p>
           <p class="book-publisher">Publisher: <%=  book.author.name %></p>
           <%if user_signed_in?%>
-            <button class="btn btn-primary">Borrowed </button>
+            <button class="btn btn-primary">Borrow </button>
             <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
-            <% end %>
+          <%else%>
+            <%= link_to "View", book_path(book.id), class:"btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
 </div>
+
+<!-- <% @books.each do |book|%>
+  <div class="book-container">
+    <div class="book-image">
+      <img src="#" alt="Book Cover">
+    </div>
+    <div class="book-info">      
+      <h2 class="book-title"><%= link_to book.title, book_path(book.id) %></h2>
+      <p class="book-author">Book Author</p>
+      <p class="book-publisher">Book Publisher</p>
+      
+      <button class="borrow-button">Borrow</button>
+    </div>
+    <% end %> -->

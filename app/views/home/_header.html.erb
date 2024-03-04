@@ -4,11 +4,13 @@
       <!-- <span>Library</span>   -->
       <ul>
         
-        <li><a href="#">Library</a></li>
+        <span class="logo"><%= image_tag 'logo.png',width: '100', height: '50'%></span>
+        
         <li><a href="welcome">Contact</a></li>
-        <li><a href="home">Home</a></li>
+        <li><a href="\">Home</a></li>
         <%if user_signed_in?%>
             <li><%= button_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to  "About", user_path(current_user) %></li>
         <%else%>
         <li><%= link_to  "Sign in", new_user_session_path %></li>
         <li><%= link_to "Sign up",  new_user_registration_path, method: :post %></li>
