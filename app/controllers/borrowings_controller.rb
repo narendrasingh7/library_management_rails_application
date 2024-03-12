@@ -28,7 +28,6 @@ class BorrowingsController < ApplicationController
   end
   
   def update 
-    # byebug
     if @borrowing.update(borrowing_params)
       if @borrowing.status == "returned"
         @borrowing.book.update(quantity:  @borrowing.book.quantity + 1 )
