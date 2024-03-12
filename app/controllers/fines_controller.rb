@@ -49,6 +49,3 @@ class FinesController < ApplicationController
       @author = Fine.find(params[:id])
     end
 end
-
-
-end
